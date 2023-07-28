@@ -72,12 +72,18 @@ function selectItems(){
         var iframe = document.createElement('iframe');
         iframe.style.height = "297mm";
         iframe.style.width = "210mm";
+        iframe.frameBorder = 0;
 
         iframe.id = "ifr"+x;
 
         iframe.onload = function () {
-            const elementInsideIframe = iframe.contentWindow.document.createElement('h2');
-            elementInsideIframe.textContent = `${saleItems[x].Name} on sale for ${saleItems[x].SalePrice}!`;
+            const elementInsideIframe = iframe.contentWindow.document.createElement('div');
+            elementInsideIframe.innerHTML = `
+            <div style="height: 100%; display: flex; flex-direction: column; align-content: center; justify-content: center; align-items: center;">
+                <h1 style="text-align: center; font-family: sans-serif; font-size: 5em;">${saleItems[x].Name} on sale for ${saleItems[x].SalePrice}!</h1>
+                <h2 style="text-align: center; font-family: sans-serif; color: red; font-size: 6em;">Save ${saleItems[x].SavingsPerc}% !!!</h2>
+            </div>
+            `;
     
             iframe.contentWindow.document.body.appendChild(elementInsideIframe);
         };
@@ -93,12 +99,6 @@ function unselect(){
 function printAll() {
     document.getElementById("printHide").style.display = 'none';
     window.print();
-
-    /*for (var k = 0; k < window.frames.length; k++) {
-        window.frames[k].focus();
-        window.frames[k].print();
-    }*/
-
 }
 
 class SaleItem {

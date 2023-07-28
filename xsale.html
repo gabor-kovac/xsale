@@ -15,17 +15,19 @@
         <hr>
         <div id="selectDiv" style="display: none;">
             <label for="selectList">Select items:</label>
+            <br>
             <select id="selectList" multiple size="10" style="width: 13em;"></select>
             <button id="selectBtn" onclick="selectItems()">Generate</button>
             <button onclick="unselect()">Unselect</button>
         </div>
+        <div id="printDiv" style="display: none;">
+            <hr>
+            <button id="printBtn" onclick="printAll()">Print</button>
+            <br>
+            
+        </div>
     </div>
-
-    <div id="printDiv" style="display: none;">
-        <hr>
-        <button id="printBtn" onclick="printAll()">Print</button>
-        <br>
-        <div id="printFrame"></div>
-    </div>
+    <div id="printFrame"></div>
+    
 </body>
 </html>
